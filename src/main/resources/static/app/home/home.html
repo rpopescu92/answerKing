@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-6">
+        <md-card>
+            <md-card-content>
+                <div class="col-md-12">Your items are: </div>
+                <div class="col-md-12" style="margin-top: 20px;">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <td><b>#</b></td>
+                            <td><b>Name</b></td>
+                            <td><b>Price</b></td>
+                            <td><b>Actions</b></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in items track by $index">
+                            <td><input type="checkbox" ng-click="addToCart(item)"> {{$index+1}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.price}}</td>
+                            <td><a class="btn mini blue-stripe" ng-click="editPriceItem($index+1)">Edit price</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-primary" ng-click="addItem()">Add new item</button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <md-card>
+            <md-card-content>
+                <div class="col-md-12">Your selected items are:</div>
+                <div class="col-md-12" style="margin-top: 20px;">
+                    <div ng-repeat="selection in selections">
+                        {{selection.name}}, {{selection.price}}
+                    </div>
+                    <div>
+                     <md-button ng-click="checkout()">CHECKOUT</md-button>
+                    </div>
+                    <div>{{$scope.order.getTotalPrice()}}</div>
+
+                   </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
